@@ -5,22 +5,26 @@ export default function TextForm(props) {
         // console.log("Uppercase was clicked" + text);
         let newText = text.toUpperCase();
         setText(newText)
-        setText(newText)
+        props.showAlert("Converted to Uppercase" , "success");
+
     }
     const handleLoClick= ()=>{
         // console.log("Uppercase was clicked" + text);
         let newText = text.toLowerCase();
         setText(newText)
-        setText(newText)
+        props.showAlert("Converted to Lowercase" , "success");
+
     }
     const handleOnChange= (event)=>{
         // console.log("on change");
         setText(event.target.value)
+
     }
     const speak = () => {
         let msg = new SpeechSynthesisUtterance();
         msg.text = text;
         window.speechSynthesis.speak(msg);
+        props.showAlert("Speak" , "success");
     }
 
     const handleReverse = (event) => {
@@ -31,6 +35,7 @@ export default function TextForm(props) {
         /* Convert array to string*/
         let newText = strArr.join("");
         setText(newText);
+        props.showAlert("Reverse" , "success");
     };
 
     const handletextExtract =()=>{
@@ -39,6 +44,7 @@ export default function TextForm(props) {
         const letters = text.match(regex);
         const res1 = letters.join('');
         setText(res1)
+        props.showAlert("Remove all symbols" , "success");
     };
     const handleNumExtract =()=>{
         const regex = /[0-9/ /]/g;
@@ -46,12 +52,14 @@ export default function TextForm(props) {
         const digits = text.match(regex);
         const res = digits.join('');
         setText(res)
+        props.showAlert("Extract all numbers" , "success");
     };
     const capitalize = () => {
 
         let firstchar = text.charAt(0); // storing the first char of the string
         let newText= firstchar.toUpperCase(); // converting that to uppercase
         setText(newText+text.slice(1)); // printing it with rest excluding the first char by using slice
+        props.showAlert("Capitalize the first letter" , "success");
 
     }
 
@@ -61,6 +69,7 @@ export default function TextForm(props) {
         }).join(' ');
 
         setText(newText)
+        props.showAlert("Remove duplicates" , "success");
     }
     const handleCopy = () => {
         navigator.clipboard.writeText(text);
@@ -71,6 +80,9 @@ export default function TextForm(props) {
         setText(newText.join(" "));
         props.showAlert("Extra spaces removed!", "success");
     }
+
+
+
     const[text,setText] = useState("");
     return (
         <>
