@@ -17,6 +17,60 @@ export default function TextForm(props) {
         // console.log("on change");
         setText(event.target.value)
     }
+    const speak = () => {
+        let msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        window.speechSynthesis.speak(msg);
+    }
+
+    const handleReverse = (event) => {
+        /* Convert string to array*/
+        let strArr = text.split("");
+        /* Reverse array*/
+        strArr = strArr.reverse();
+        /* Convert array to string*/
+        let newText = strArr.join("");
+        setText(newText);
+    };
+
+    const handletextExtract =()=>{
+        const regex = /[0-9/A-Z/a-z/ /]/g;
+
+        const letters = text.match(regex);
+        const res1 = letters.join('');
+        setText(res1)
+    };
+    const handleNumExtract =()=>{
+        const regex = /[0-9/ /]/g;
+
+        const digits = text.match(regex);
+        const res = digits.join('');
+        setText(res)
+    };
+    const capitalize = () => {
+
+        let firstchar = text.charAt(0); // storing the first char of the string
+        let newText= firstchar.toUpperCase(); // converting that to uppercase
+        setText(newText+text.slice(1)); // printing it with rest excluding the first char by using slice
+
+    }
+
+    const onRemoveDuplicatesClick = (e) => {
+        let newText = text.split(' ').filter(function(item,i,allItems){
+            return i === allItems.indexOf(item);
+        }).join(' ');
+
+        setText(newText)
+    }
+    const handleCopy = () => {
+        navigator.clipboard.writeText(text);
+        props.showAlert("Copied to Clipboard!", "success");
+    }
+    const handleExtraSpaces = () => {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+        props.showAlert("Extra spaces removed!", "success");
+    }
     const[text,setText] = useState("");
     return (
         <>
@@ -28,6 +82,16 @@ export default function TextForm(props) {
             </div>
             <button className="btn btn-outline-dark mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
             <button className="btn btn-outline-dark mx-1 my-1" onClick={handleLoClick}>Convert to Lowercase</button>
+            <button type="submit" onClick={speak} className="btn btn-warning mx-2 my-2">Speak</button>
+            <button type="submit" onClick={handleReverse} className="btn btn-warning mx-2 my-2">Reverse</button>
+            <button type="submit" onClick={handletextExtract} className="btn btn-outline-info mx-2 my-2">Remove all the symbols</button>
+            <button type="submit" onClick={handleNumExtract} className="btn btn-outline-info mx-2 my-2">Extract all numbers</button>
+            <button type="submit" onClick={capitalize} className="btn btn-outline-success mx-2 my-2">Capitalize</button>
+            <button type="submit" onClick={onRemoveDuplicatesClick} className="btn btn-outline-secondary mx-2 my-2">Remove Duplicate</button>
+            <button type="submit" onClick={handleCopy} className="btn btn-outline-secondary mx-2 my-2">Copy Text</button>
+            <button type="submit" onClick={handleExtraSpaces} className="btn btn-outline-secondary mx-2 my-2">Remove Extra Space</button>
+
+
         </div>
 
      <div className="container my-3">
