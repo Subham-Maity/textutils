@@ -74,14 +74,16 @@ export default function TextForm(props) {
     const[text,setText] = useState("");
     return (
         <>
-        <div className= "container">
+        <div className= "container" style={{color: props.mode==='dark'?'white':'#182429'}}>
 
             <h1>{props.heading} </h1>
             <div className="mb-3">
-                <textarea className="form-control" value ={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+                {/*Explanation: The above code changes the background color of the TextBox according to the mode which is being enabled.
+                 For example, if dark mode is enabled then the background color of the TextBox will be grey otherwise white.*/}
+                <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'grey':'white', color: props.mode==='dark'?'white':'#182429'}} id="myBox" rows="8"></textarea>
             </div>
-            <button className="btn btn-outline-dark mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
-            <button className="btn btn-outline-dark mx-1 my-1" onClick={handleLoClick}>Convert to Lowercase</button>
+            <button className="btn btn-outline-success mx-2 my-2" onClick={handleUpClick}>Convert to Uppercase</button>
+            <button className="btn btn-outline-success mx-2 my-2" onClick={handleLoClick}>Convert to Lowercase</button>
             <button type="submit" onClick={speak} className="btn btn-warning mx-2 my-2">Speak</button>
             <button type="submit" onClick={handleReverse} className="btn btn-warning mx-2 my-2">Reverse</button>
             <button type="submit" onClick={handletextExtract} className="btn btn-outline-info mx-2 my-2">Remove all the symbols</button>
@@ -94,14 +96,15 @@ export default function TextForm(props) {
 
         </div>
 
-     <div className="container my-3">
+            <div className="container my-3" style={{color: props.mode==='dark'?'white':'#042743'}}>
          <h2>Your text summary</h2>
-         {/*Call the split() method on the string, passing it a string containing a space as a parameter. The split method will return an array of the string's words, on which you can access the length property to get the number of words in the string.*/}
+         {/*Call the split() method on the string, passing it a string containing a space as a parameter. The split method will return an array of the string's words,
+          on which you can access the length property to get the number of words in the string.*/}
          <p>{text.replace(/\n/g, " ").split(' ').filter(value => value != "").length } words and {text.length} characters</p>
          <p>{0.008 * text.replace(/\n/g, " ").split(' ').filter(value => value != "").length } Minutes is your Average Read Speed</p>
-         <h2>Preview</h2>
-         <p>{text.length>0?text:"Nothing to preview!"}</p>
-             </div>
+                <h2>Preview</h2>
+                <p>{text.length>0?text:"To preview it, enter something into the textbox above"}</p>
+            </div>
 
     </>
     );
