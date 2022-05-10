@@ -26,11 +26,14 @@ function App() {
             setMode('dark');//setMode('dark'); is a function that sets the state of mode to dark
             document.body.style.backgroundColor = '#182429';
             showAlert("Dark mode has been enabled", "success");
+            document.title='TextUtils dark Mode';
+
         }
         else{
             setMode('light');
             document.body.style.backgroundColor = 'white';
             showAlert("Light mode has been enabled", "success");
+            document.title='TextUtils light Mode';
         }
     }
   return (
