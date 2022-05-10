@@ -10,7 +10,7 @@ import React, {useState} from 'react'
         if(myStyle.color==='black'){
             setMyStyle({
                 color: 'white',
-                backgroundColor: 'black',
+                backgroundColor: '#212529',
                 border: '1px solid white'
             })
             setBtnText('Enable Light Mode')
