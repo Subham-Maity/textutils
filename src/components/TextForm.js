@@ -118,6 +118,9 @@ export default function TextForm(props) {
 
         </div>
 
+
+
+
             <div className="container my-3" style={{color: props.mode==='dark'?'white':'#042743'}}>
          <h2>Your text summary</h2>
          {/*Call the split() method on the string, passing it a string containing a space as a parameter. The split method will return an array of the string's words,
@@ -135,8 +138,8 @@ export default function TextForm(props) {
                 {/*The filter() does not execute the function for empty array elements.*/}
 
          <p>{0.008 * text.replace(/\n/g, " ").split(' ').filter(value => value !=="").length } Minutes is your Average Read Speed</p>
-                <h2>Preview</h2>
-                <p>{text.length>0?text:"Nothing to preview!"}</p>
+                <fieldset className="border border-200 p-3"> <h2>Preview</h2>
+               <p>{text.length>0?text:"Nothing to preview!"}</p></fieldset>
             </div>
 
     </>

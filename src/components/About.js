@@ -54,6 +54,7 @@ function About(props) {
                                                                          <li>   12. Your Average Read Speed Count</li>
                                                                              <li>   13. Preview</li>
                                                                               <li>   14. Clear text</li>
+                                                                                  <li>   15. Color Palette</li>
                          </div>
                      </div>
                  </div>

@@ -30,13 +30,11 @@ export default function Navbar(props) {
                         Ternary Operators are used for decision-making in place of longer if and else conditional statements.
                          We have used it to change the color of the text while changing the mode for better visibility.
                           A toggleMode function is assigned to the button which will be invoked on clicking the button.*/}
+
+
                     <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
-
-
-
-
-                        <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
-                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
+                        <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckChecked"/>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckChecked">Enable Dark Mode</label>
                     </div>
                 </div>
             </div>
