@@ -1,5 +1,23 @@
 ![Screenshot](Screenshot.png)
 
+## TextUtils is a React-based application that provides seamless text editing with many useful features Features :
+### 1. Dark theme features that make the app appear more appealing to the user
+### 2. Convert to Uppercase
+### 3. Convert to Lowercase
+### 3. Speak
+### 4. Reverse
+### 5. Remove all the symbols
+### 6. Extract all numbers
+### 7. Capitalize
+### 8. Remove Duplicate
+### 9. Copy Text
+### 10. Remove Extra Space
+### 11. Words and Characters Count
+### 12. Your Average Read Speed Count
+### 13. Preview
+### 14. Clear text
+### 15. Color Palette
+
 ## How to run our React app?
 1.Clone the repository
 
